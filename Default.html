@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript">
+        function run() {
+            var data = {
+                Status: 'FooBar',
+                Name: 'Lab',
+                StartTime: '2016-01-29T16:04:27'
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'Service.svc/AddNewActivity',
+                data: JSON.stringify(data), 
+                contentType: 'application/json; charset=utf-8', 
+                dataType: 'json', 
+                success: function (msg) {
+                    alert(data.Status + ' == ' + msg.Status);
+                },
+                error: function (e) {
+                    alert('failed with ' + e.statusText);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Sample</h1>
+    <p>Client Website always return Null Json String</p>
+    <button type="button" onclick="run()">Click Me</button>
+</body>
+</html>
